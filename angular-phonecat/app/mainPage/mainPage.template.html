@@ -1,0 +1,83 @@
+
+    <section layout="row" flex="">
+
+        <md-sidenav class="md-sidenav-left" md-component-id="left" md-disable-backdrop="" md-whiteframe="4">
+
+            <md-toolbar class="md-theme-indigo">
+                <h1 class="md-toolbar-tools">Disabled Backdrop</h1>
+            </md-toolbar>
+
+            <md-content layout-margin="">
+                <p>
+                This sidenav is not showing any backdrop, where users can click on it, to close the sidenav.
+                </p>
+                <md-button ng-click="toggleLeft()" class="md-accent">
+                    Close this Sidenav
+                </md-button>
+            </md-content>
+
+        </md-sidenav>
+
+        <md-content flex="" layout-padding="">
+
+            <div layout="column" layout-align="top center">
+                <p>
+                Developers can also disable the backdrop of the sidenav.<br>
+                This will disable the functionality to click outside to close the sidenav.
+                </p>
+
+                <div>
+                    <md-button ng-click="toggleLeft()" class="md-raised">
+                        Toggle Sidenav
+                    </md-button>
+                </div>
+
+            </div>
+
+        </md-content>
+
+    </section>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+<md-progress-linear md-mode="determinate" value="{{vm.determinateValue}}"></md-progress-linear>
+
+
+<md-slider-container>
+    <span>R</span>
+    <md-slider flex min="0" max="255" ng-model="color.red" aria-label="red" id="red-slider">
+    </md-slider>
+    <md-input-container>
+        <input flex type="number" ng-model="color.red" aria-label="red" aria-controls="red-slider">
+    </md-input-container>
+</md-slider-container>
+
+
+<div>
+    Search: <input ng-model="$ctrl.query"/>
+</div>
+
+<p>Sort by: 
+<select ng-model="$ctrl.orderProp">
+    <option value = "name">Alphabetical </option>
+    <option value = "balance">amount</option>
+</select>
+</p>
+<ul>
+    <li ng-repeat="user in $ctrl.users| filter: $ctrl.query | orderBy:$ctrl.orderProp">
+        <span>User Name: {{user.name}}</span>
+        <p>Number Of Accounts: {{user.accountNum}}</p>
+        <div ng-repeat="account in user.accounts"> 
+            <p>Balance: {{account.balance}}</p>
+        </div>
+    </li>
+</ul>
