@@ -1,70 +1,34 @@
+<head>
+    <link rel="stylesheet" href="mainPage/mainPage.css">
+</head >
+<!-- <md-progress-linear md-mode="determinate" value="{{vm.determinateValue}}"></md-progress-linear> -->
 
-    <section layout="row" flex="">
-
-        <md-sidenav class="md-sidenav-left" md-component-id="left" md-disable-backdrop="" md-whiteframe="4">
-
-            <md-toolbar class="md-theme-indigo">
-                <h1 class="md-toolbar-tools">Disabled Backdrop</h1>
-            </md-toolbar>
-
-            <md-content layout-margin="">
-                <p>
-                This sidenav is not showing any backdrop, where users can click on it, to close the sidenav.
-                </p>
-                <md-button ng-click="toggleLeft()" class="md-accent">
-                    Close this Sidenav
-                </md-button>
-            </md-content>
-
-        </md-sidenav>
-
-        <md-content flex="" layout-padding="">
-
-            <div layout="column" layout-align="top center">
-                <p>
-                Developers can also disable the backdrop of the sidenav.<br>
-                This will disable the functionality to click outside to close the sidenav.
-                </p>
-
-                <div>
-                    <md-button ng-click="toggleLeft()" class="md-raised">
-                        Toggle Sidenav
-                    </md-button>
-                </div>
-
-            </div>
-
-        </md-content>
-
-    </section>
-
-</div>
-
-
-
-
-
-
-
-
-
-
-<md-progress-linear md-mode="determinate" value="{{vm.determinateValue}}"></md-progress-linear>
-
-
-<md-slider-container>
-    <span>R</span>
-    <md-slider flex min="0" max="255" ng-model="color.red" aria-label="red" id="red-slider">
+<!--
+    <md-slider-container>
+    <span>previous Date</span>
+    <md-slider md-discrete flex min="0" max="255" ng-model="color.red" aria-label="red" id="red-slider">
     </md-slider>
-    <md-input-container>
-        <input flex type="number" ng-model="color.red" aria-label="red" aria-controls="red-slider">
-    </md-input-container>
-</md-slider-container>
 
+    </md-slider-container>
+-->
+<h4>Financial Watcher</h4>
+
+<nav-bar> </nav-bar>
+<app-ctrl></app-ctrl>
 
 <div>
     Search: <input ng-model="$ctrl.query"/>
 </div>
+<input type="checkbox" ng-model="$ctrl.note"> disable notes</input>
+
+<md-checkbox ng-model="$ctrl.debit" aria-label="Checkbox 1" class="checked" color="{{$ctrl.debit?"red":"green"}}">
+    Debit: {{ $ctrl.debit}}
+</md-checkbox>
+
+<md-checkbox ng-model="$ctrl.credit " aria-label="Checkbox 1" ng-init="true">
+    Credit: {{ $ctrl.credit }}
+</md-checkbox>
+
 
 <p>Sort by: 
 <select ng-model="$ctrl.orderProp">
@@ -72,12 +36,17 @@
     <option value = "balance">amount</option>
 </select>
 </p>
-<ul>
-    <li ng-repeat="user in $ctrl.users| filter: $ctrl.query | orderBy:$ctrl.orderProp">
-        <span>User Name: {{user.name}}</span>
-        <p>Number Of Accounts: {{user.accountNum}}</p>
-        <div ng-repeat="account in user.accounts"> 
-            <p>Balance: {{account.balance}}</p>
-        </div>
-    </li>
-</ul>
+    
+<table ng-table="$ctrl.tableParams" class="table" show-filter="true"> 
+    <tr ng-repeat="row in $data| filter:$ctrl.query"> 
+        <td ng-hide="{{$ctrl.Sender}}" data-title="Sender" sortable="'Sender'">a      {{row.sender}} </td >
+                 <td  data-title="Receiver" sortable="'Receiver'">b      {{row.receiver}} </td >
+                 <td data-title="isActive" sortable="'isActive'"> {{row.isActive}} </td >
+                 <td data-title="date" sortable="'date'" > {{row.date}} </td >
+                 <td  data-title="type" sortable="'type'" > {{row.type}} </td >
+                 <td ng-hide="$ctrl.note" data-title="note" sortable="'note'" > {{row.note}} </td >
+                <td  data-title="amount" sortable="'amount'" > {{row.amount}} </td> 
+                <td data-title="category" sortable="'category'" > {{row.category}}</td>
+    </tr>
+    </table>
+           

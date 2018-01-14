@@ -8,6 +8,9 @@ config(['$locationProvider', '$routeProvider',
                 when('/main', {
                     template: '<main-page></main-page>'
                 }).
+            when('/navBar', {
+                template: '<nav-bar></nav-bar>'
+            }).
             when('/phones/:phoneId', {
                 template: '<phone-detail></phone-detail>'
             }).
