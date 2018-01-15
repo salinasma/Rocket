@@ -1,6 +1,18 @@
 <head>
-    <link rel="stylesheet" href="mainPage/mainPage.css">
-</head >
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
+    <link rel="stylesheet" href="mainPage/mainPage.css" />
+</head>
+
+
+<md-card class="docs-logo">
+    <img src="img/Rocket.png" md-card-image alt="image caption" >
+    <md-card-content>
+    </md-card-content>
+</md-card>
+
+
+
+
 <!-- <md-progress-linear md-mode="determinate" value="{{vm.determinateValue}}"></md-progress-linear> -->
 
 <!--
@@ -11,7 +23,7 @@
 
     </md-slider-container>
 -->
-<h4>Financial Watcher</h4>
+<h4 class="page-header">Financial Watcher</h4>
 
 <nav-bar> </nav-bar>
 <app-ctrl></app-ctrl>
@@ -19,16 +31,51 @@
 <div>
     Search: <input ng-model="$ctrl.query"/>
 </div>
-<input type="checkbox" ng-model="$ctrl.note"> disable notes</input>
 
 <md-checkbox ng-model="$ctrl.debit" aria-label="Checkbox 1" class="checked" color="{{$ctrl.debit?"red":"green"}}">
-    Debit: {{ $ctrl.debit}}
+    Debit 
 </md-checkbox>
 
 <md-checkbox ng-model="$ctrl.credit " aria-label="Checkbox 1" ng-init="true">
-    Credit: {{ $ctrl.credit }}
+    Credit
 </md-checkbox>
 
+<md-checkbox ng-model="$ctrl.sender" aria-label="Checkbox 1" ng-init="true">
+    Sender
+</md-checkbox>
+
+<md-checkbox ng-model="$ctrl.receiver" aria-label="Checkbox 1" ng-init="true">
+    Reciever
+</md-checkbox>
+
+<md-checkbox ng-model="$ctrl.isActive" aria-label="Checkbox 1" ng-init="true">
+    Active</md-checkbox>
+
+<md-checkbox ng-model="$ctrl.date" aria-label="Checkbox 1" ng-init="true">
+    Date
+</md-checkbox>
+
+<md-checkbox ng-model="$ctrl.type" aria-label="Checkbox 1" ng-init="true">
+    Type
+</md-checkbox>
+
+<md-checkbox ng-model="$ctrl.note" aria-label="Checkbox 1" ng-init="true">
+    Note</md-checkbox>
+
+<md-checkbox ng-model="$ctrl.amount" aria-label="Checkbox 1" ng-init="true">
+    Amount
+</md-checkbox>
+
+<md-checkbox ng-model="$ctrl.category" aria-label="Checkbox 1" ng-init="true">
+    Category
+</md-checkbox>
+
+<md-input-container>
+      <label>Show</label>
+        <md-select ng-model="someModel">
+                <md-option ng-value="['a','b']" ng-repeat="opt in neighborhoods2">{{ opt }}</md-option>
+                  </md-select>
+</md-input-container>
 
 <p>Sort by: 
 <select ng-model="$ctrl.orderProp">
@@ -36,17 +83,21 @@
     <option value = "balance">amount</option>
 </select>
 </p>
-    
+
 <table ng-table="$ctrl.tableParams" class="table" show-filter="true"> 
     <tr ng-repeat="row in $data| filter:$ctrl.query"> 
-        <td ng-hide="{{$ctrl.Sender}}" data-title="Sender" sortable="'Sender'">a      {{row.sender}} </td >
-                 <td  data-title="Receiver" sortable="'Receiver'">b      {{row.receiver}} </td >
-                 <td data-title="isActive" sortable="'isActive'"> {{row.isActive}} </td >
-                 <td data-title="date" sortable="'date'" > {{row.date}} </td >
-                 <td  data-title="type" sortable="'type'" > {{row.type}} </td >
-                 <td ng-hide="$ctrl.note" data-title="note" sortable="'note'" > {{row.note}} </td >
-                <td  data-title="amount" sortable="'amount'" > {{row.amount}} </td> 
-                <td data-title="category" sortable="'category'" > {{row.category}}</td>
+        <td ng-hide="$ctrl.sender" data-title="'Sender'" sortable="'Sender'">{{row.sender}} </td >
+        <td ng-hide="$ctrl.receiver"data-title="'Receiver'" sortable="'Receiver'">{{row.receiver}} </td >
+        <td ng-hide="$ctrl.isActive" data-title="'isActive'" sortable="'isActive'"> {{row.isActive}} </td >
+        <td ng-hide="$ctrl.date" data-title="'date'" sortable="'date'" > {{row.date}} </td >
+        <td ng-hide="$ctrl.type" data-title="'type'" sortable="'type'" > {{row.type}} </td >
+        <td ng-hide="$ctrl.note" data-title="'note'" sortable="'note'" > {{row.note}} </td >
+        <td ng-hide="$ctrl.amount" data-title="'amount'" sortable="'amount'" > {{row.amount}} </td> 
+        <td ng-hide="$ctrl.category" data-title="'category'" sortable="'category'" > {{row.category}}</td>
     </tr>
-    </table>
-           
+</table>
+ <md-button class="md-raised" ng-click='$ctrl.show = !$ctrl.show' >Show Bar Chart</md-button>
+ <div class="panel-body">
+    <canvas chart-data="data" legend="true" id="doughnut" ng-show="$ctrl.show" class="chart chart-doughnut" >
+    </canvas>
+</div>

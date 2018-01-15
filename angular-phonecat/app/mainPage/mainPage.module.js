@@ -7,5 +7,7 @@ angular.module('mainPage', [
         'material.svgAssetsCache',
         'navBar',
         'toast',
-        'ngTable'
+        'ngTable',
+        'chart.js'
+
 ]);

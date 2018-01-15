@@ -1,15 +1,27 @@
-.unchecked{
-    background-color:red;
+.docs-logo {
+    text-align: center;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: left;
+    padding: 0 0 16px;
+    margin: 0 auto;
 }
-
-.checked{
-    background-color:green;
+.docs-logo:focus {
+    outline: none;
 }
-
-
-
-
-
-body {
-        background-color: powderblue;
-    }
+.docs-logo > img {
+    height: 75px;
+    width: 150px;
+    display: block;
+    -webkit-transform-origin: 50% 0;
+    transform-origin: 50% 0;
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+}

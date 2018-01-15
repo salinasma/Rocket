@@ -4,14 +4,15 @@ angular.
 module('mainPage').
 component('mainPage', {
     templateUrl: 'mainPage/mainPage.template.html',
-    controller: function UserListController($http, $scope , $timeout, $mdSidenav,NgTableParams ) {
+    controller: function UserListController($http, $scope , $timeout, $mdSidenav,NgTableParams) {
         var self = this;
         self.orderProp = 'date';
         var tableParams; 
 
+        self.data = [100,200,300, 400];
+        self.labels= ["a","b","c", "d"];
         $http.get('accounts/patterson.json').then(function(response) {
             self.users= response.data.transactions;
-            console.log(self.users);
         }).then(function()
             {
         self.tableParams = new NgTableParams({}, { dataset: self.users});
