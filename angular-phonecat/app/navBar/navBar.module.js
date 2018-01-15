@@ -4,4 +4,6 @@
 angular.module('navBar',[
     'ngMaterial',
     'ngMessages', 
-    'material.svgAssetsCache']);
+    'material.svgAssetsCache',
+    'financialTracker'
+]);

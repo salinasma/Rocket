@@ -4,100 +4,24 @@
 </head>
 
 
-<md-card class="docs-logo">
-    <img src="img/Rocket.png" md-card-image alt="image caption" >
-    <md-card-content>
-    </md-card-content>
-</md-card>
+
+<div ng-cloak>
+
+    <div >
+        <md-content class="titlePage">
+            <md-card layout="row" class="titlePage">
+                <md-card layout-align="star" >
+                    <img layout-align="star" class="md-card-image" src="img/Rocket.png" md-card-image alt="image caption" >
+                </md-card>
+                    <md-card-title flow  layout-align="center fill" class="page-header md-padding titlePage"> Financial Watcher </md-card-title>
+
+
+            </md-card>
+
+        </md-content>
+    </div>
 
 
 
-
-<!-- <md-progress-linear md-mode="determinate" value="{{vm.determinateValue}}"></md-progress-linear> -->
-
-<!--
-    <md-slider-container>
-    <span>previous Date</span>
-    <md-slider md-discrete flex min="0" max="255" ng-model="color.red" aria-label="red" id="red-slider">
-    </md-slider>
-
-    </md-slider-container>
--->
-<h4 class="page-header">Financial Watcher</h4>
-
-<nav-bar> </nav-bar>
-<app-ctrl></app-ctrl>
-
-<div>
-    Search: <input ng-model="$ctrl.query"/>
-</div>
-
-<md-checkbox ng-model="$ctrl.debit" aria-label="Checkbox 1" class="checked" color="{{$ctrl.debit?"red":"green"}}">
-    Debit 
-</md-checkbox>
-
-<md-checkbox ng-model="$ctrl.credit " aria-label="Checkbox 1" ng-init="true">
-    Credit
-</md-checkbox>
-
-<md-checkbox ng-model="$ctrl.sender" aria-label="Checkbox 1" ng-init="true">
-    Sender
-</md-checkbox>
-
-<md-checkbox ng-model="$ctrl.receiver" aria-label="Checkbox 1" ng-init="true">
-    Reciever
-</md-checkbox>
-
-<md-checkbox ng-model="$ctrl.isActive" aria-label="Checkbox 1" ng-init="true">
-    Active</md-checkbox>
-
-<md-checkbox ng-model="$ctrl.date" aria-label="Checkbox 1" ng-init="true">
-    Date
-</md-checkbox>
-
-<md-checkbox ng-model="$ctrl.type" aria-label="Checkbox 1" ng-init="true">
-    Type
-</md-checkbox>
-
-<md-checkbox ng-model="$ctrl.note" aria-label="Checkbox 1" ng-init="true">
-    Note</md-checkbox>
-
-<md-checkbox ng-model="$ctrl.amount" aria-label="Checkbox 1" ng-init="true">
-    Amount
-</md-checkbox>
-
-<md-checkbox ng-model="$ctrl.category" aria-label="Checkbox 1" ng-init="true">
-    Category
-</md-checkbox>
-
-<md-input-container>
-      <label>Show</label>
-        <md-select ng-model="someModel">
-                <md-option ng-value="['a','b']" ng-repeat="opt in neighborhoods2">{{ opt }}</md-option>
-                  </md-select>
-</md-input-container>
-
-<p>Sort by: 
-<select ng-model="$ctrl.orderProp">
-    <option value = "name">Alphabetical </option>
-    <option value = "balance">amount</option>
-</select>
-</p>
-
-<table ng-table="$ctrl.tableParams" class="table" show-filter="true"> 
-    <tr ng-repeat="row in $data| filter:$ctrl.query"> 
-        <td ng-hide="$ctrl.sender" data-title="'Sender'" sortable="'Sender'">{{row.sender}} </td >
-        <td ng-hide="$ctrl.receiver"data-title="'Receiver'" sortable="'Receiver'">{{row.receiver}} </td >
-        <td ng-hide="$ctrl.isActive" data-title="'isActive'" sortable="'isActive'"> {{row.isActive}} </td >
-        <td ng-hide="$ctrl.date" data-title="'date'" sortable="'date'" > {{row.date}} </td >
-        <td ng-hide="$ctrl.type" data-title="'type'" sortable="'type'" > {{row.type}} </td >
-        <td ng-hide="$ctrl.note" data-title="'note'" sortable="'note'" > {{row.note}} </td >
-        <td ng-hide="$ctrl.amount" data-title="'amount'" sortable="'amount'" > {{row.amount}} </td> 
-        <td ng-hide="$ctrl.category" data-title="'category'" sortable="'category'" > {{row.category}}</td>
-    </tr>
-</table>
- <md-button class="md-raised" ng-click='$ctrl.show = !$ctrl.show' >Show Bar Chart</md-button>
- <div class="panel-body">
-    <canvas chart-data="data" legend="true" id="doughnut" ng-show="$ctrl.show" class="chart chart-doughnut" >
-    </canvas>
+    <nav-bar> </nav-bar>
 </div>

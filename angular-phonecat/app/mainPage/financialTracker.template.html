@@ -1,0 +1,76 @@
+
+    <div>
+        Search: <input ng-model="$ctrl.query"/>
+    </div>
+    <div layout="row">
+        <md-checkbox ng-model="$ctrl.sender" aria-label="Checkbox 1" ng-init="true">
+            Sender
+        </md-checkbox>
+
+        <md-checkbox ng-model="$ctrl.receiver" aria-label="Checkbox 1" ng-init="true">
+            Reciever
+        </md-checkbox>
+
+        <md-checkbox ng-model="$ctrl.isActive" aria-label="Checkbox 1" ng-init="true">
+            Active</md-checkbox>
+
+        <md-checkbox ng-model="$ctrl.date" aria-label="Checkbox 1" ng-init="true">
+            Date
+        </md-checkbox>
+
+        <md-checkbox ng-model="$ctrl.type" aria-label="Checkbox 1" ng-init="true">
+            Type
+        </md-checkbox>
+
+        <md-checkbox ng-model="$ctrl.note" aria-label="Checkbox 1" ng-init="true">
+            Note</md-checkbox>
+
+        <md-checkbox ng-model="$ctrl.amount" aria-label="Checkbox 1" ng-init="true">
+            Amount
+        </md-checkbox>
+
+        <md-checkbox ng-model="$ctrl.category" aria-label="Checkbox 1" ng-init="true">
+            Category
+        </md-checkbox>
+
+    </div>
+
+
+
+    <table ng-table="$ctrl.tableParams" class="table" show-filter="true"> 
+        <tr ng-repeat="row in $data| filter:$ctrl.query"> 
+            <td ng-hide="$ctrl.sender" data-title="'Sender'" sortable="'Sender'">{{row.sender}} </td >
+            <td ng-hide="$ctrl.receiver"data-title="'Receiver'" sortable="'Receiver'">{{row.receiver}} </td >
+            <td ng-hide="$ctrl.isActive" data-title="'isActive'" sortable="'isActive'"> {{row.isActive}} </td >
+            <td ng-hide="$ctrl.date" data-title="'date'" sortable="'date'" > {{row.date}} </td >
+            <td ng-hide="$ctrl.type" data-title="'type'" sortable="'type'" > {{row.type}} </td >
+            <td ng-hide="$ctrl.note" data-title="'note'" sortable="'note'" > {{row.note}} </td >
+            <td ng-hide="$ctrl.amount" data-title="'amount'" sortable="'amount'" > {{row.amount}} </td> 
+            <td ng-hide="$ctrl.category" data-title="'category'" sortable="'category'" > {{row.category}}</td>
+        </tr>
+    </table>
+
+            <md-button class="md-raised" ng-click='$ctrl.show = !$ctrl.show' >Show Bar Chart</md-button>
+            <div class="panel-body" ng-show="$ctrl.show" >
+                <div >
+                    <md-input-container class="md-padding" layout="row">
+                        <label>Show</label>
+                        <md-select ng-model="someModel" multiple
+                                   class="demo-select-header"
+                                   >
+                                   <md-select-header class="demo-select-header md-text">
+                                       <input ng-model="searchTerm"
+                                              type="search"
+                                              placeholder="Search for a type of graph"
+                                              class="demo-header-searchbox md-text">
+                                   </md-select-header>
+                            <md-option ng-value="multiselect" ng-repeat="multiselect in options | filter: searchTerm">{{ multiselect }}</md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+
+
+                <canvas layout-align="start" id="doughnut" class="chart chart-doughnut" chart-data="chartdata" chart-lables="chartlabels" legend="true"  ng-show="$ctrl.show" style="display: block; width: 523px; height: 261px;" width="500" ></canvas>
+            </div>
+
+

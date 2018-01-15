@@ -1,13 +1,13 @@
 'use strict';
 
 // Define the `phoneList` module
-angular.module('mainPage', [ 
+angular.module('financialTracker', [ 
         'ngMaterial', 
         'ngMessages' , 
         'material.svgAssetsCache',
         'navBar',
         'toast',
         'ngTable',
-        'chart.js',
+        'chart.js'
 
 ]);

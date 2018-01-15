@@ -1,16 +1,16 @@
 'use strict';
 
 angular.
-module('mainPage').
-component('mainPage', {
-    templateUrl: 'mainPage/mainPage.template.html',
+module('financialTracker').
+component('financialTracker', {
+    templateUrl: 'mainPage/financialTracker.template.html',
     controller: function UserListController($http, $scope , $timeout, $mdSidenav,NgTableParams) {
         var self = this;
         self.orderProp = 'date';
         var tableParams; 
 
-        self.data = [100,200,300, 400];
-        self.labels= ["a","b","c", "d"];
+        $scope.chartlabels= ["a","b","c", "d"];
+        $scope.chartdata = [100,200,300, 400];
 
        $scope.options = [];
         $http.get('accounts/patterson.json').then(function(response) {
@@ -24,11 +24,25 @@ component('mainPage', {
             
           // do some more stuff with obj[key]
           }
-            console.log($scope.options);
 
             }) 
+
+
+    $scope.$watch("row",function(newValue,oldValue){
+            console.log(newValue);
+          });
+       /* 
+    var debito;
+    var credito;
+    for(activity in $scope.row){
+        if(row.isActive === 'debit'){
+            debito += 1;
+        }
+         else
+            credito += 1;
         
-        
+    }
+       */ 
         $scope.creditOrDebit = function(statement){
             if(self.debit){
                 if(statement.type === "debit")
@@ -52,13 +66,7 @@ component('mainPage', {
                 $mdSidenav(componentId).toggle();
             };
         }
-      $scope.users = [
-              { id: 1, name: 'Bob' },
-                  { id: 2, name: 'Alice' },
-                      { id: 3, name: 'Steve' }
-        ];
-          $scope.selectedUser = { id: 1, name: 'Bob' };
-        
+       
 
     }
 });
